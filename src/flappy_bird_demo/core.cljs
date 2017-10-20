@@ -3,7 +3,8 @@
    [cljsjs.react]
    [cljsjs.react.dom]
    [sablono.core :as sab :include-macros true]
-   [cljs.core.async :refer [<! chan sliding-buffer put! close! timeout]])
+   [cljs.core.async :refer [<! chan sliding-buffer put! close! timeout]]
+   [sc.api :refer-macros [spy letsc defsc]])
   (:require-macros
    [cljs.core.async.macros :refer [go-loop go]]))
 
@@ -126,10 +127,10 @@
 
 (defn jump [{:keys [cur-time jump-count] :as state}]
   (-> state
-      (assoc
-          :jump-count (inc jump-count)
-          :flappy-start-time cur-time
-          :initial-vel jump-vel)))
+    (assoc
+      :jump-count (inc jump-count)
+      :flappy-start-time cur-time
+      :initial-vel jump-vel)))
 
 ;; derivatives
 
