@@ -126,11 +126,12 @@
       score))
 
 (defn jump [{:keys [cur-time jump-count] :as state}]
-  (-> state
-    (assoc
-      :jump-count (inc jump-count)
-      :flappy-start-time cur-time
-      :initial-vel jump-vel)))
+  (spy
+    (-> state
+      (assoc
+        :jump-count (inc jump-count)
+        :flappy-start-time cur-time
+        :initial-vel jump-vel))))
 
 ;; derivatives
 
